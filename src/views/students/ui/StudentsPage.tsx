@@ -12,10 +12,10 @@ export default function StudentsPage() {
         <LocalNav title="학생마당 (AI·SW교육)" items={studentsNavItems} />
 
         <div className="min-w-0 flex-1">
-          <h2 className="text-lg font-bold text-gray-900">체험 부스 안내</h2>
+          <h2 className="text-heading-s font-bold text-fg-1">체험 부스 안내</h2>
 
-          <div className="mt-4 overflow-hidden rounded-2xl border border-gray-300">
-            <table className="w-full table-fixed border-collapse text-left text-sm">
+          <div className="mt-4 overflow-x-auto rounded-xlarge border border-border-default">
+            <table className="w-full min-w-[640px] table-fixed border-collapse text-left text-body-s">
               <colgroup>
                 <col className="w-[10%]" />
                 <col className="w-[20%]" />
@@ -24,22 +24,22 @@ export default function StudentsPage() {
                 <col className="w-[42%]" />
               </colgroup>
               <thead>
-                <tr className="bg-brand text-white">
-                  <th className="border-r border-white/20 px-4 py-3 text-center font-bold">부스번호</th>
-                  <th className="border-r border-white/20 px-4 py-3 text-center font-bold">부스 이름</th>
-                  <th className="border-r border-white/20 px-4 py-3 text-center font-bold">유형</th>
-                  <th className="border-r border-white/20 px-4 py-3 text-center font-bold">참여대상</th>
-                  <th className="px-4 py-3 text-center font-bold">프로그램 제목</th>
+                <tr className="border-b-2 border-secondary-70 bg-bg-canvas text-fg-1">
+                  <th className="h-12 border-r border-border-default px-4 text-center font-bold">부스번호</th>
+                  <th className="h-12 border-r border-border-default px-4 text-center font-bold">부스 이름</th>
+                  <th className="h-12 border-r border-border-default px-4 text-center font-bold">유형</th>
+                  <th className="h-12 border-r border-border-default px-4 text-center font-bold">참여대상</th>
+                  <th className="h-12 px-4 text-center font-bold">프로그램 제목</th>
                 </tr>
               </thead>
               <tbody>
                 {booths.map((b) => (
-                  <tr key={b.no} className="border-t border-gray-300">
-                    <td className="border-r border-gray-300 bg-brand-light px-4 py-3 text-center font-bold text-gray-900">{b.no}</td>
-                    <td className="border-r border-gray-300 px-4 py-3 text-center text-gray-700">{b.name}</td>
-                    <td className="border-r border-gray-300 px-4 py-3 text-center text-gray-700">{b.type}</td>
-                    <td className="border-r border-gray-300 px-4 py-3 text-center text-gray-700">{b.audience}</td>
-                    <td className="px-4 py-3 text-center text-gray-700">{b.title}</td>
+                  <tr key={b.no} className="border-t border-gray-20">
+                    <td className="border-r border-gray-20 bg-primary-10 px-4 py-3 text-center font-bold text-fg-1">{b.no}</td>
+                    <td className="border-r border-gray-20 px-4 py-3 text-center text-fg-2">{b.name}</td>
+                    <td className="border-r border-gray-20 px-4 py-3 text-center text-fg-2">{b.type}</td>
+                    <td className="border-r border-gray-20 px-4 py-3 text-center text-fg-2">{b.audience}</td>
+                    <td className="px-4 py-3 text-center text-fg-2">{b.title}</td>
                   </tr>
                 ))}
               </tbody>

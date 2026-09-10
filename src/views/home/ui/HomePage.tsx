@@ -5,7 +5,9 @@ import PromoVideo from "@/widgets/promo-video/ui/PromoVideo";
 import TimelineSection from "@/widgets/event-timeline/ui/TimelineSection";
 import EventStatsRow from "@/widgets/event-stats/ui/EventStatsRow";
 import QuickApplyGroups from "@/widgets/quick-apply/ui/QuickApplyGroups";
-import BackgroundLines from "@/shared/ui/BackgroundLines";
+import Button from "@/shared/ui/Button";
+import Badge from "@/shared/ui/Badge";
+import Icon from "@/shared/ui/Icon";
 
 const HERO_FACTS = [
   { label: "일정", value: "10.31(토) - 11.1(일)" },
@@ -16,102 +18,91 @@ const HERO_FACTS = [
 export default function HomePage() {
   return (
     <div>
-      <section className="relative overflow-hidden bg-gradient-to-br from-brand-dark to-brand text-white">
-        <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-white/20 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-28 -left-20 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
-
-        <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
+      <section className="border-b border-border-default bg-bg-muted">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-stretch">
             <div className="flex flex-col justify-between">
               <div>
-                <h1 className="text-3xl font-black leading-tight sm:text-5xl">
+                <h1 className="text-display-s font-bold text-fg-1 sm:text-display-m">
                   2026 전남광주
                   <br />
                   AI·SW체험한마당
                 </h1>
-                <p className="mt-4 max-w-xl text-sm text-sky-100 sm:text-base">
+                <p className="mt-4 max-w-xl text-body-s text-fg-2 sm:text-body-m">
                   학생을 위한 AI·SW 한마당과 교원을 위한 미래교육박람회가 한자리에.
                   <br />
                   지금 사전신청하고 줄서지 않고 스마트하게 참여하세요.
                 </p>
               </div>
 
-              <Link
-                href="/apply/register"
-                className="mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-bold text-brand transition hover:bg-sky-50"
-              >
-                사전등록하기 →
-              </Link>
+              <Button href="/apply/register" size="l" className="mt-8 w-fit">
+                사전등록하기
+                <Icon name="arrow-right" className="h-4 w-4" />
+              </Button>
             </div>
 
             <PromoVideo />
           </div>
 
-          <div className="mt-10 flex w-full flex-col items-center gap-4 rounded-full bg-white/15 px-6 py-4 sm:flex-row sm:justify-between sm:gap-8">
-            {HERO_FACTS.map((f, i) => (
-              <div key={f.label} className="flex items-center gap-4">
-                {i > 0 && <div className="hidden h-5 w-px bg-white/20 sm:block" />}
-                <div className="flex items-center gap-3">
-                  <span className="shrink-0 rounded-full border border-white/50 px-3 py-1 text-xs font-bold">{f.label}</span>
-                  <span className="text-sm font-bold sm:text-base">{f.value}</span>
-                </div>
+          <div className="mt-10 flex w-full flex-col items-start gap-4 rounded-xlarge border border-border-default bg-bg-canvas px-6 py-5 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
+            {HERO_FACTS.map((f) => (
+              <div key={f.label} className="flex items-center gap-3">
+                <Badge variant="outlined-primary">{f.label}</Badge>
+                <span className="text-body-s font-bold text-fg-1 sm:text-body-m">{f.value}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <div className="relative overflow-hidden">
-        <BackgroundLines className="pointer-events-none absolute inset-x-0 top-0 -z-10 w-full min-w-[1600px]" />
+      <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+        <EventStatsRow />
+      </section>
 
-        <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
-          <EventStatsRow />
-        </section>
+      <section className="mx-auto max-w-6xl px-4 py-4 sm:px-6">
+        <h2 className="text-heading-s font-bold text-fg-1">지금, 미래를 만나보세요</h2>
+        <p className="mt-1 text-body-s text-fg-3">
+          AI로 연결되는 배움의 장, 2026 전남광주 AI·SW체험한마당. 학생, 교사, 지역사회가 함께 만드는 특별한 경험에 지금 참여하세요.
+        </p>
+        <div className="mt-4">
+          <QuickApplyGroups />
+        </div>
+      </section>
 
-        <section className="mx-auto max-w-6xl px-4 py-4 sm:px-6">
-          <h2 className="text-lg font-bold text-gray-900">지금, 미래를 만나보세요!</h2>
-          <p className="mt-1 text-sm text-gray-500">
-            AI로 연결되는 배움의 장, 2026 전남광주 AI·SW체험한마당. 학생, 교사, 지역사회가 함께 만드는 특별한 경험에 지금 참여하세요.
-          </p>
-          <div className="mt-4">
-            <QuickApplyGroups />
-          </div>
-        </section>
+      <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+        <h2 className="text-heading-s font-bold text-fg-1">실시간 상세 현황</h2>
+        <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
+          <CapacityWidget />
+          <CongestionWidget />
+        </div>
+      </section>
 
-        <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
-          <h2 className="text-lg font-bold text-gray-900">실시간 상세 현황</h2>
-          <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
-            <CapacityWidget />
-            <CongestionWidget />
-          </div>
-        </section>
+      <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+        <div className="flex items-center justify-between gap-3">
+          <h2 className="text-heading-s font-bold text-fg-1">행사 일정</h2>
+          <Link href="/guide/schedule" className="flex shrink-0 items-center gap-1 text-body-s font-semibold text-fg-link hover:underline">
+            전체 일정표 보기
+            <Icon name="arrow-right" className="h-4 w-4" />
+          </Link>
+        </div>
+        <div className="mt-4">
+          <TimelineSection />
+        </div>
+      </section>
 
-        <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
-          <div className="flex items-center justify-between gap-3">
-            <h2 className="text-lg font-bold text-gray-900">행사 일정</h2>
-            <Link href="/guide/schedule" className="shrink-0 text-sm font-semibold text-brand hover:underline">
-              전체 일정표 보기 →
-            </Link>
-          </div>
-          <div className="mt-4">
-            <TimelineSection />
-          </div>
-        </section>
-
-        <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-brand to-brand-dark px-6 py-12 text-center text-white sm:px-12">
-            <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-white/10 blur-3xl" />
-            <p className="text-xl font-black sm:text-2xl">AI로 연결되는 배움, 함께 여는 미래</p>
-            <p className="mt-3 text-sm text-white/80">10.31(토) - 11.1(일) · 전남광주통합특별시교육청AI교육원 · 학생·교원·일반 시민 누구나</p>
-            <Link
-              href="/apply/register"
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-bold text-brand transition hover:bg-brand-light"
-            >
-              지금 사전등록하기 →
-            </Link>
-          </div>
-        </section>
-      </div>
+      <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
+        <div className="rounded-xlarge bg-primary-70 px-6 py-12 text-center text-fg-on-primary sm:px-12">
+          <p className="text-heading-m font-bold">AI로 연결되는 배움, 함께 여는 미래</p>
+          <p className="mt-3 text-body-s text-white/80">10.31(토) - 11.1(일) · 전남광주통합특별시교육청AI교육원 · 학생·교원·일반 시민 누구나</p>
+          <Link
+            href="/apply/register"
+            className="mt-6 inline-flex h-14 items-center gap-2 rounded-medium bg-bg-canvas px-6 text-body-l font-bold text-primary-70 transition-colors duration-150 ease-out hover:bg-primary-10"
+          >
+            지금 사전등록하기
+            <Icon name="arrow-right" className="h-4 w-4" />
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }

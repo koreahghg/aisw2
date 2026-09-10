@@ -1,5 +1,6 @@
 import PageHero from "@/shared/ui/PageHero";
 import LocalNav from "@/widgets/local-nav/ui/LocalNav";
+import Badge from "@/shared/ui/Badge";
 import { guideNavItems } from "@/shared/config/guide-nav";
 import PosterPreview from "./PosterPreview";
 
@@ -22,18 +23,18 @@ export default function GuideOverviewPage() {
         <LocalNav title="박람회 안내" items={guideNavItems} />
 
         <div className="min-w-0 flex-1">
-          <h2 className="text-lg font-bold text-gray-900">행사 개요</h2>
+          <h2 className="text-heading-s font-bold text-fg-1">행사 개요</h2>
           <div className="mt-4 flex flex-col gap-6 sm:flex-row">
             <PosterPreview />
-            <dl className="grid flex-1 grid-cols-1 items-center gap-x-5 gap-y-4 rounded-2xl border border-gray-100 bg-white p-6 sm:grid-cols-[auto_1fr]">
+            <dl className="grid flex-1 grid-cols-1 items-center gap-x-5 gap-y-4 rounded-xlarge border border-border-default bg-bg-canvas p-6 sm:grid-cols-[auto_1fr]">
               {OVERVIEW.map((row) => (
                 <div key={row.label} className="contents">
                   <dt>
-                    <span className="inline-flex w-full items-center justify-center whitespace-nowrap rounded-full bg-brand px-10 py-2 text-sm font-bold text-white">
+                    <Badge variant="solid-primary" className="w-full justify-center whitespace-nowrap px-4 py-1.5 text-body-s">
                       {row.label}
-                    </span>
+                    </Badge>
                   </dt>
-                  <dd className="text-sm leading-relaxed text-gray-800">{row.value}</dd>
+                  <dd className="text-body-s leading-relaxed text-fg-2">{row.value}</dd>
                 </div>
               ))}
             </dl>

@@ -11,8 +11,8 @@ export default function GuideMapPage() {
         <LocalNav title="박람회 안내" items={guideNavItems} />
 
         <div className="min-w-0 flex-1">
-          <h2 className="text-lg font-bold text-gray-900">부스 배치도</h2>
-          <div className="mt-4 flex h-72 items-center justify-center rounded-2xl border border-dashed border-gray-300 bg-white text-sm text-gray-400 sm:h-96">
+          <h2 className="text-heading-s font-bold text-fg-1">부스 배치도</h2>
+          <div className="mt-4 flex h-72 items-center justify-center rounded-xlarge border border-dashed border-border-default bg-bg-canvas text-body-s text-fg-3 sm:h-96">
             부스 배치도 이미지 영역 (추후 삽입 예정)
           </div>
         </div>

@@ -1,10 +1,10 @@
 export type CongestionLevel = "여유" | "보통" | "혼잡" | "매우 혼잡";
 
 export const CONGESTION_STYLE: Record<CongestionLevel, { dot: string; text: string; bar: string }> = {
-  "여유": { dot: "bg-emerald-500", text: "text-emerald-700", bar: "bg-emerald-500" },
-  "보통": { dot: "bg-yellow-500", text: "text-yellow-700", bar: "bg-yellow-500" },
-  "혼잡": { dot: "bg-orange-500", text: "text-orange-700", bar: "bg-orange-500" },
-  "매우 혼잡": { dot: "bg-red-500", text: "text-red-700", bar: "bg-red-500" },
+  "여유": { dot: "bg-success", text: "text-success", bar: "bg-success" },
+  "보통": { dot: "bg-warning", text: "text-warning", bar: "bg-warning" },
+  "혼잡": { dot: "bg-danger", text: "text-danger", bar: "bg-danger" },
+  "매우 혼잡": { dot: "bg-accent-70", text: "text-accent-70", bar: "bg-accent-70" },
 };
 
 export interface CongestionZone {

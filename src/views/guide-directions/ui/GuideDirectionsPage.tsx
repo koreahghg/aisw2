@@ -1,5 +1,6 @@
 import PageHero from "@/shared/ui/PageHero";
 import LocalNav from "@/widgets/local-nav/ui/LocalNav";
+import Icon from "@/shared/ui/Icon";
 import { guideNavItems } from "@/shared/config/guide-nav";
 
 export default function GuideDirectionsPage() {
@@ -11,19 +12,22 @@ export default function GuideDirectionsPage() {
         <LocalNav title="박람회 안내" items={guideNavItems} />
 
         <div className="min-w-0 flex-1">
-          <h2 className="text-lg font-bold text-gray-900">오시는 길</h2>
+          <h2 className="text-heading-s font-bold text-fg-1">오시는 길</h2>
 
-          <div className="mt-4 flex aspect-[16/9] w-full items-center justify-center rounded-2xl border border-dashed border-gray-200 bg-gray-50 text-sm text-gray-400">
+          <div className="mt-4 flex aspect-[16/9] w-full items-center justify-center rounded-xlarge border border-dashed border-border-default bg-bg-subtle text-body-s text-fg-3">
             카카오 지도 준비중 (전남광주통합특별시교육청AI교육원)
           </div>
 
-          <div className="mt-6 flex items-center justify-between gap-4 rounded-2xl bg-brand p-5">
-            <p className="text-sm font-semibold text-white">전남광주통합특별시 북구 능안로 30번길 7 (오치동 5-25)</p>
+          <div className="mt-6 flex flex-col items-start gap-4 rounded-xlarge border border-border-default bg-bg-canvas p-5 sm:flex-row sm:items-center sm:justify-between">
+            <p className="flex items-center gap-2 text-body-s font-semibold text-fg-1">
+              <Icon name="map-pin" className="h-4 w-4 text-primary-60" />
+              전남광주통합특별시 북구 능안로 30번길 7 (오치동 5-25)
+            </p>
             <a
               href="https://map.kakao.com/link/search/전남광주통합특별시 북구 능안로 30번길 7"
               target="_blank"
               rel="noopener noreferrer"
-              className="shrink-0 rounded-full bg-white px-4 py-2 text-sm font-semibold text-brand"
+              className="shrink-0 rounded-small border border-primary-50 px-4 py-2 text-body-s font-semibold text-primary-60 transition-colors duration-150 ease-out hover:bg-primary-10"
             >
               카카오맵 길찾기
             </a>

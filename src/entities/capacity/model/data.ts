@@ -18,9 +18,9 @@ export const STATUS_LABEL: Record<CapacityStatus, string> = {
 };
 
 export const STATUS_STYLE: Record<CapacityStatus, string> = {
-  open: "bg-emerald-50 text-emerald-700 ring-emerald-600/20",
-  almost: "bg-amber-50 text-amber-700 ring-amber-600/20",
-  closed: "bg-gray-100 text-gray-500 ring-gray-500/20",
+  open: "bg-success/10 text-success ring-success/20",
+  almost: "bg-warning/10 text-warning ring-warning/20",
+  closed: "bg-bg-subtle text-fg-4 ring-border-default",
 };
 
 export const capacitySlots: CapacitySlot[] = [

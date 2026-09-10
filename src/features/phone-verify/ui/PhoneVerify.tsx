@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Icon from "@/shared/ui/Icon";
+import Button from "@/shared/ui/Button";
 
 export default function PhoneVerify({
   phone,
@@ -18,8 +20,8 @@ export default function PhoneVerify({
 
   return (
     <div>
-      <label className="mb-1.5 block text-sm font-semibold text-gray-700">
-        휴대폰 번호 <span className="text-rose-500">*</span>
+      <label className="mb-1.5 block text-body-s font-semibold text-fg-2">
+        휴대폰 번호 <span className="text-danger">*</span>
       </label>
       <div className="flex gap-2">
         <input
@@ -32,16 +34,11 @@ export default function PhoneVerify({
           }}
           placeholder="'-' 없이 숫자만 입력"
           disabled={verified}
-          className="w-full rounded-lg border border-gray-200 px-3 py-2.5 text-sm outline-none focus:border-brand focus:ring-2 focus:ring-brand-light disabled:bg-gray-50 disabled:text-gray-400"
+          className="w-full rounded-small border border-border-default px-3 py-2.5 text-body-s outline-none focus:border-primary-50 focus:ring-2 focus:ring-primary-10 disabled:bg-bg-subtle disabled:text-fg-4"
         />
-        <button
-          type="button"
-          disabled={verified || phone.length < 10}
-          onClick={() => setSent(true)}
-          className="shrink-0 rounded-lg bg-brand px-4 py-2.5 text-xs font-semibold text-white transition hover:bg-brand-dark disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-gray-400"
-        >
+        <Button type="button" size="s" disabled={verified || phone.length < 10} onClick={() => setSent(true)} className="shrink-0 text-body-xs">
           인증번호 받기
-        </button>
+        </Button>
       </div>
 
       {sent && !verified && (
@@ -51,22 +48,21 @@ export default function PhoneVerify({
             value={code}
             onChange={(e) => setCode(e.target.value)}
             placeholder="인증번호 6자리 (예시: 123456)"
-            className="w-full rounded-lg border border-gray-200 px-3 py-2.5 text-sm outline-none focus:border-brand focus:ring-2 focus:ring-brand-light"
+            className="w-full rounded-small border border-border-default px-3 py-2.5 text-body-s outline-none focus:border-primary-50 focus:ring-2 focus:ring-primary-10"
           />
-          <button
-            type="button"
-            disabled={code.length < 4}
-            onClick={() => onVerified(true)}
-            className="shrink-0 rounded-lg bg-brand px-4 py-2.5 text-xs font-semibold text-white transition hover:bg-brand-dark disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-gray-400"
-          >
+          <Button type="button" size="s" disabled={code.length < 4} onClick={() => onVerified(true)} className="shrink-0 text-body-xs">
             인증확인
-          </button>
+          </Button>
         </div>
       )}
       {sent && !verified && (
-        <p className="mt-1.5 text-xs text-gray-400">알림톡으로 인증번호가 발송되었습니다. (프로토타입: 임의 값 입력 가능)</p>
+        <p className="mt-1.5 text-body-xs text-fg-3">알림톡으로 인증번호가 발송되었습니다. (프로토타입: 임의 값 입력 가능)</p>
       )}
-      {verified && <p className="mt-1.5 text-xs font-semibold text-emerald-600">✓ 휴대폰 인증이 완료되었습니다.</p>}
+      {verified && (
+        <p className="mt-1.5 flex items-center gap-1 text-body-xs font-semibold text-success">
+          <Icon name="check" className="h-3.5 w-3.5" /> 휴대폰 인증이 완료되었습니다.
+        </p>
+      )}
     </div>
   );
 }

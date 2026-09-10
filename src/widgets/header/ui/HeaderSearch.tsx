@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { searchIndex } from "@/shared/config/search-index";
+import Icon from "@/shared/ui/Icon";
+import Badge from "@/shared/ui/Badge";
 
 export default function HeaderSearch({ open, onClose }: { open: boolean; onClose: () => void }) {
   const router = useRouter();
@@ -34,12 +36,12 @@ export default function HeaderSearch({ open, onClose }: { open: boolean; onClose
 
   return (
     <div
-      className="fixed inset-0 z-[60] flex items-start justify-center bg-black/40 px-4 pt-24 backdrop-blur-sm sm:pt-32"
+      className="fixed inset-0 z-[60] flex items-start justify-center bg-gray-100/50 px-4 pt-24 sm:pt-32"
       onClick={handleClose}
     >
-      <div className="w-full max-w-xl rounded-2xl bg-white p-2" onClick={(e) => e.stopPropagation()}>
+      <div className="w-full max-w-xl rounded-xlarge bg-bg-canvas p-2 shadow-4" onClick={(e) => e.stopPropagation()}>
         <form
-          className="flex items-center gap-3 rounded-xl border border-gray-200 px-4 py-3.5"
+          className="flex items-center gap-3 rounded-large border border-border-default px-4 py-3.5 focus-within:border-primary-50"
           onSubmit={(e) => {
             e.preventDefault();
             if (results[0]) {
@@ -48,29 +50,19 @@ export default function HeaderSearch({ open, onClose }: { open: boolean; onClose
             }
           }}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            className="h-5 w-5 shrink-0 text-gray-400"
-          >
-            <circle cx="11" cy="11" r="7" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M21 21l-4.3-4.3" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
+          <Icon name="search" className="h-5 w-5 shrink-0 text-fg-3" />
           <input
             autoFocus
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             type="text"
             placeholder="검색어를 입력하세요"
-            className="w-full bg-transparent text-base text-gray-700 outline-none placeholder:text-gray-400"
+            className="w-full bg-transparent text-body-m text-fg-1 outline-none placeholder:text-fg-3"
           />
           <button
             type="button"
             onClick={handleClose}
-            className="shrink-0 rounded-full bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-400 hover:text-gray-600"
+            className="shrink-0 rounded-xsmall bg-bg-subtle px-2.5 py-1 text-body-xs font-semibold text-fg-3 hover:text-fg-1"
           >
             ESC
           </button>
@@ -79,7 +71,7 @@ export default function HeaderSearch({ open, onClose }: { open: boolean; onClose
         {query.trim() && (
           <div className="mt-2 max-h-80 overflow-y-auto">
             {results.length === 0 ? (
-              <p className="px-4 py-6 text-center text-sm text-gray-400">&ldquo;{query}&rdquo;에 대한 검색 결과가 없습니다.</p>
+              <p className="px-4 py-6 text-center text-body-s text-fg-3">&ldquo;{query}&rdquo;에 대한 검색 결과가 없습니다.</p>
             ) : (
               <ul className="flex flex-col gap-1 p-1">
                 {results.map((r) => (
@@ -87,12 +79,14 @@ export default function HeaderSearch({ open, onClose }: { open: boolean; onClose
                     <Link
                       href={r.href}
                       onClick={handleClose}
-                      className="flex items-start gap-3 rounded-xl px-3 py-2.5 transition hover:bg-brand-light"
+                      className="flex items-start gap-3 rounded-medium px-3 py-2.5 transition-colors duration-150 ease-out hover:bg-primary-10"
                     >
-                      <span className="mt-0.5 shrink-0 rounded-full bg-brand-light px-2 py-0.5 text-[10px] font-bold text-brand">{r.group}</span>
+                      <Badge variant="solid-pastel" className="mt-0.5">
+                        {r.group}
+                      </Badge>
                       <span className="min-w-0">
-                        <span className="block truncate text-sm font-semibold text-gray-800">{r.title}</span>
-                        <span className="block truncate text-xs text-gray-400">{r.desc}</span>
+                        <span className="block truncate text-body-s font-semibold text-fg-1">{r.title}</span>
+                        <span className="block truncate text-body-xs text-fg-3">{r.desc}</span>
                       </span>
                     </Link>
                   </li>

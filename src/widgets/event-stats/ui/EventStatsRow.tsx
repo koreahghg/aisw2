@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { congestionZones } from "@/entities/congestion/model/data";
 import { capacitySlots } from "@/entities/capacity/model/data";
+import Icon, { type IconName } from "@/shared/ui/Icon";
+import Badge from "@/shared/ui/Badge";
 
 function StatCard({
   href,
@@ -9,32 +11,35 @@ function StatCard({
   badge,
   value,
   progress,
-  progressColor,
   desc,
 }: {
   href: string;
-  icon: string;
+  icon: IconName;
   label: string;
   badge: string;
   value: string;
   progress: number;
-  progressColor: string;
   desc: string;
 }) {
   return (
-    <Link href={href} className="flex flex-col gap-3 rounded-2xl border border-gray-100 bg-white p-5 transition hover:border-brand">
+    <Link
+      href={href}
+      className="flex flex-col gap-3 rounded-xlarge border border-border-default bg-bg-canvas p-5 transition-colors duration-150 ease-out hover:border-primary-50 hover:shadow-2"
+    >
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand text-base text-white">{icon}</span>
-          <span className="text-sm font-bold text-gray-900">{label}</span>
+          <span className="flex h-9 w-9 items-center justify-center rounded-medium bg-primary-50 text-fg-on-primary">
+            <Icon name={icon} className="h-4 w-4" />
+          </span>
+          <span className="text-body-s font-bold text-fg-1">{label}</span>
         </div>
-        <span className="rounded-full bg-brand-light px-2 py-0.5 text-[10px] font-bold text-brand">{badge}</span>
+        <Badge variant="solid-pastel">{badge}</Badge>
       </div>
-      <p className="text-2xl font-black text-gray-900">{value}</p>
-      <div className="h-1.5 w-full overflow-hidden rounded-full bg-gray-100">
-        <div className={`h-full rounded-full ${progressColor}`} style={{ width: `${Math.min(100, progress)}%` }} />
+      <p className="text-heading-m font-bold text-fg-1">{value}</p>
+      <div className="h-1.5 w-full overflow-hidden rounded-pill bg-bg-subtle">
+        <div className="h-full rounded-pill bg-primary-50" style={{ width: `${Math.min(100, progress)}%` }} />
       </div>
-      <p className="text-xs text-gray-400">{desc}</p>
+      <p className="text-body-xs text-fg-3">{desc}</p>
     </Link>
   );
 }
@@ -56,32 +61,29 @@ export default function EventStatsRow() {
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
       <StatCard
         href="/guide/directions"
-        icon="👥"
+        icon="users"
         label="행사장 혼잡도"
         badge="실시간 (예시)"
         value={`${congestionLevel} ${avgCongestion}%`}
         progress={avgCongestion}
-        progressColor="bg-brand"
         desc="구역별 혼잡도는 오시는 길 페이지에서 확인하세요."
       />
       <StatCard
         href="/notice/parking"
-        icon="🚗"
+        icon="car"
         label="주차 안내"
         badge="예시 데이터"
         value={`잔여 ${parkingRemaining}대 / ${parkingTotal}대`}
         progress={parkingPercent}
-        progressColor="bg-brand"
         desc="주차 공간이 한정되어 대중교통 이용을 권장합니다."
       />
       <StatCard
         href="/apply/register"
-        icon="📝"
+        icon="clipboard"
         label="사전등록 현황"
         badge="실시간 (예시)"
         value={`${registerCurrent.toLocaleString()}명`}
         progress={registerPercent}
-        progressColor="bg-brand"
         desc={`목표 ${registerTotal.toLocaleString()}명 대비 ${registerPercent}%`}
       />
     </div>

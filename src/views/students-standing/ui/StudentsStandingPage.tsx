@@ -11,8 +11,8 @@ export default function StudentsStandingPage() {
         <LocalNav title="학생마당 (AI·SW교육)" items={studentsNavItems} />
 
         <div className="min-w-0 flex-1">
-          <h2 className="text-lg font-bold text-gray-900">상설 체험</h2>
-          <p className="mt-2 text-sm text-gray-500">
+          <h2 className="text-heading-s font-bold text-fg-1">상설 체험</h2>
+          <p className="mt-2 text-body-s text-fg-3">
             사전신청 없이 누구나 자유롭게 참여할 수 있는 상시 운영 체험존입니다. (3D프린팅 체험, AI 그림퀴즈, 코딩 보드게임 등)
           </p>
         </div>

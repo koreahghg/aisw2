@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import PhoneVerify from "@/features/phone-verify/ui/PhoneVerify";
+import Button from "@/shared/ui/Button";
+import Badge from "@/shared/ui/Badge";
+import Icon from "@/shared/ui/Icon";
 import { mockApplications, type Application } from "@/entities/application/model/data";
 
 export default function ApplyLookupForm() {
@@ -22,43 +25,36 @@ export default function ApplyLookupForm() {
   return (
     <div>
       <PhoneVerify phone={phone} onPhoneChange={setPhone} verified={verified} onVerified={setVerified} />
-      <button
-        onClick={search}
-        disabled={!verified}
-        className="mt-3 w-full rounded-lg bg-brand px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-dark disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-gray-400"
-      >
+      <Button onClick={search} disabled={!verified} fullWidth className="mt-3">
         조회
-      </button>
-      <p className="mt-2 text-xs text-gray-400">프로토타입 데모: 인증 완료 후 조회하면 예시 신청 내역이 표시됩니다.</p>
+      </Button>
+      <p className="mt-2 text-body-xs text-fg-3">프로토타입 데모: 인증 완료 후 조회하면 예시 신청 내역이 표시됩니다.</p>
 
       {searched && (
         <div className="mt-8 space-y-3">
           {applications.length === 0 ? (
-            <p className="rounded-2xl border border-dashed border-gray-200 p-8 text-center text-sm text-gray-400">
+            <p className="rounded-xlarge border border-dashed border-border-default p-8 text-center text-body-s text-fg-3">
               조회된 신청 내역이 없습니다.
             </p>
           ) : (
             applications.map((a) => (
               <div
                 key={a.id}
-                className="flex items-center justify-between gap-4 rounded-lg border border-gray-100 bg-white p-5"
+                className="flex items-center justify-between gap-4 rounded-large border border-border-default bg-bg-canvas p-5"
               >
                 <div>
-                  <p className="text-base font-bold text-gray-900">{a.program}</p>
-                  <p className="mt-1 text-sm text-gray-400">{a.date}</p>
+                  <p className="text-body-l font-bold text-fg-1">{a.program}</p>
+                  <p className="mt-1 text-body-s text-fg-3">{a.date}</p>
                 </div>
                 <div className="flex shrink-0 items-center gap-3">
-                  <span
-                    className={`flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-bold ${
-                      a.status === "취소됨" ? "bg-gray-100 text-gray-400" : "bg-emerald-50 text-emerald-600"
-                    }`}
-                  >
-                    {a.status === "취소됨" ? "✕" : "✓"} {a.status}
-                  </span>
+                  <Badge variant={a.status === "취소됨" ? "outlined-tertiary" : "success"} className="gap-1 px-3 py-1.5">
+                    <Icon name={a.status === "취소됨" ? "x-circle" : "check-circle"} className="h-3.5 w-3.5" />
+                    {a.status}
+                  </Badge>
                   {a.status === "신청완료" && (
                     <button
                       onClick={() => cancel(a.id)}
-                      className="rounded-full border border-rose-200 px-3 py-1.5 text-xs font-semibold text-rose-500 transition-colors hover:bg-rose-50"
+                      className="rounded-small border border-danger/30 px-3 py-1.5 text-body-xs font-semibold text-danger transition-colors duration-150 ease-out hover:bg-danger/10"
                     >
                       신청 취소
                     </button>

@@ -16,13 +16,15 @@ export default function LocalNav({ title, items }: { title: string; items: Local
   const pathname = usePathname();
 
   return (
-    <nav className="shrink-0 sm:sticky sm:top-[84px] sm:w-52 sm:self-start">
-      <p className="px-3 text-xs font-bold uppercase tracking-wide text-gray-400">{title}</p>
-      <ul className="mt-2 flex gap-1 overflow-x-auto px-1 pb-2 sm:mt-3 sm:flex-col sm:gap-1 sm:overflow-visible sm:px-0 sm:pb-0">
+    <nav className="shrink-0 sm:sticky sm:top-[72px] sm:w-60 sm:self-start sm:border-r sm:border-border-default sm:pr-2">
+      <p className="px-3 text-body-xs font-bold uppercase tracking-wide text-fg-3">{title}</p>
+      <ul className="mt-2 flex gap-1 overflow-x-auto px-1 pb-2 sm:mt-3 sm:flex-col sm:gap-0.5 sm:overflow-visible sm:px-0 sm:pb-0">
         {items.map((item) => {
           const isActive = item.onClick ? item.active : item.active ?? (item.href ? pathname === item.href : false);
-          const className = `block w-40 whitespace-nowrap rounded-lg px-4 py-3 text-center text-base font-medium leading-snug transition sm:w-full sm:whitespace-normal sm:text-left ${
-            isActive ? "bg-brand font-semibold text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900"
+          const className = `block w-40 shrink-0 whitespace-nowrap rounded-medium px-4 py-3 text-center text-body-s font-medium leading-snug transition-colors duration-150 ease-out sm:w-full sm:whitespace-normal sm:rounded-none sm:border-l-[3px] sm:px-4 sm:py-2.5 sm:text-left ${
+            isActive
+              ? "bg-primary-10 font-bold text-primary-60 sm:border-primary-50"
+              : "bg-bg-subtle text-fg-2 hover:bg-primary-10 hover:text-primary-60 sm:border-transparent sm:bg-transparent"
           }`;
           const content = item.shortLabel ?? item.label;
 

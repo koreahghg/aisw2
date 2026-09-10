@@ -12,7 +12,7 @@ export default function GuideSchedulePage() {
         <LocalNav title="박람회 안내" items={guideNavItems} />
 
         <div className="min-w-0 flex-1">
-          <h2 className="text-lg font-bold text-gray-900">전체 일정표</h2>
+          <h2 className="text-heading-s font-bold text-fg-1">전체 일정표</h2>
           <div className="mt-4">
             <TimelineSection />
           </div>

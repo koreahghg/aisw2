@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import PageHero from "@/shared/ui/PageHero";
 import LocalNav from "@/widgets/local-nav/ui/LocalNav";
+import Icon from "@/shared/ui/Icon";
 import { noticeNavItems } from "@/shared/config/notice-nav";
 import { notices } from "@/entities/notice/model/data";
 
@@ -22,39 +23,34 @@ export default function NoticeDetailPage({ id }: { id: string }) {
         <LocalNav title="알림마당" items={navItems} />
 
         <div className="min-w-0 flex-1">
-          <Link href="/notice" className="text-sm font-medium text-gray-500 hover:text-gray-700">
-            ← 목록으로
+          <Link href="/notice" className="flex items-center gap-1 text-body-s font-medium text-fg-3 hover:text-fg-1">
+            <Icon name="chevron-right" className="h-4 w-4 rotate-180" />
+            목록으로
           </Link>
 
-          <h2 className="mt-4 text-lg font-bold text-gray-900">{notice.title}</h2>
-          <p className="mt-1 text-xs text-gray-400">{notice.date}</p>
-          <div className="mt-6 space-y-3 border-t border-gray-100 pt-6 text-sm leading-relaxed text-gray-700">
+          <h2 className="mt-4 text-heading-s font-bold text-fg-1">{notice.title}</h2>
+          <p className="mt-1 text-body-xs tabular-nums text-fg-3">{notice.date}</p>
+          <div className="mt-6 space-y-3 border-t border-border-default pt-6 text-body-s leading-relaxed text-fg-2">
             {notice.content.map((line) => (
               <p key={line}>{line}</p>
             ))}
           </div>
 
           {notice.attachments && notice.attachments.length > 0 && (
-            <div className="mt-8 border-t border-gray-100 pt-6">
-              <p className="text-sm font-semibold text-gray-800">첨부파일</p>
+            <div className="mt-8 border-t border-border-default pt-6">
+              <p className="text-body-s font-semibold text-fg-1">첨부파일</p>
               <ul className="mt-3 space-y-2">
                 {notice.attachments.map((file) => (
                   <li key={file.name}>
                     <a
                       href="#"
-                      className="flex items-center gap-3 rounded-xl bg-gray-100 px-4 py-3 transition-colors hover:bg-gray-200"
+                      className="flex items-center gap-3 rounded-medium border border-border-default bg-bg-canvas px-4 py-3 transition-colors duration-150 ease-out hover:border-primary-50 hover:bg-primary-10"
                     >
-                      <span className="flex h-8 w-8 shrink-0 items-center justify-center text-brand">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M21.44 11.05l-9.19 9.19a5 5 0 01-7.07-7.07l9.19-9.19a3.5 3.5 0 014.95 4.95l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"
-                          />
-                        </svg>
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center text-primary-60">
+                        <Icon name="download" className="h-5 w-5" />
                       </span>
-                      <span className="min-w-0 truncate text-sm font-medium text-gray-800">{file.name}</span>
-                      <span className="shrink-0 text-xs text-gray-400">{file.size}</span>
+                      <span className="min-w-0 truncate text-body-s font-medium text-fg-1">{file.name}</span>
+                      <span className="shrink-0 text-body-xs text-fg-3">{file.size}</span>
                     </a>
                   </li>
                 ))}
