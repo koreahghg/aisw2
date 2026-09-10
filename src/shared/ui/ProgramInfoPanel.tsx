@@ -30,11 +30,16 @@ export default function ProgramInfoPanel({
   return (
     <div className="mt-4 flex flex-col gap-3">
       {schedules && schedules.length > 0 && (
-        <div className="flex flex-col gap-3 sm:flex-row">
+        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           {schedules.map((s) => (
-            <div key={s.label} className="flex flex-1 items-center gap-3 rounded-large border border-border-default bg-bg-canvas p-4">
-              <Badge variant="solid-primary">{s.label}</Badge>
-              <p className="text-body-s font-semibold text-fg-1">{s.value}</p>
+            <div
+              key={s.label}
+              className="flex min-w-0 flex-1 items-center gap-3 rounded-large border border-border-default bg-bg-canvas p-4 sm:basis-48"
+            >
+              <Badge variant="solid-primary" className="shrink-0">
+                {s.label}
+              </Badge>
+              <p className="min-w-0 text-body-s font-semibold text-fg-1">{s.value}</p>
             </div>
           ))}
         </div>

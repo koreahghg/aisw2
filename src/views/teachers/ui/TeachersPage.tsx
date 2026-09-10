@@ -8,13 +8,13 @@ export default function TeachersPage() {
     <div>
       <PageHero title="부스 안내" desc="미래교육박람회 - 교원을 위한 부스 전시, 연수, 특강 프로그램을 확인하세요." />
 
-      <div className="flex flex-col gap-8 px-4 py-12 sm:flex-row sm:px-6">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 sm:flex-row sm:px-6">
         <LocalNav title="교사마당 (미래교육)" items={teachersNavItems} />
 
         <div className="min-w-0 flex-1">
           <h2 className="text-heading-s font-bold text-fg-1">부스 안내</h2>
 
-          <div className="mt-4 overflow-x-auto rounded-xlarge border border-border-default">
+          <div className="mt-4 scroll-shadow-x overflow-x-auto rounded-xlarge border border-border-default">
             <table className="w-full min-w-[640px] table-fixed border-collapse text-left text-body-s">
               <colgroup>
                 <col className="w-[10%]" />

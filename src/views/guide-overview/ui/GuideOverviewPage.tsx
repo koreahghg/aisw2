@@ -19,14 +19,14 @@ export default function GuideOverviewPage() {
     <div>
       <PageHero title="행사 개요" desc="행사 개요부터 오시는 길까지, 2026 전남광주통합특별시교육청 AI·SW체험한마당의 모든 기본 정보를 확인하세요." />
 
-      <div className="flex flex-col gap-8 px-4 py-12 sm:flex-row sm:px-6">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 sm:flex-row sm:px-6">
         <LocalNav title="박람회 안내" items={guideNavItems} />
 
         <div className="min-w-0 flex-1">
           <h2 className="text-heading-s font-bold text-fg-1">행사 개요</h2>
-          <div className="mt-4 flex flex-col gap-6 sm:flex-row">
+          <div className="mt-4 flex flex-col gap-6 lg:flex-row">
             <PosterPreview />
-            <dl className="grid flex-1 grid-cols-1 items-center gap-x-5 gap-y-4 rounded-xlarge border border-border-default bg-bg-canvas p-6 sm:grid-cols-[auto_1fr]">
+            <dl className="grid min-w-0 flex-1 grid-cols-1 items-center gap-x-5 gap-y-4 rounded-xlarge border border-border-default bg-bg-canvas p-6 md:grid-cols-[auto_1fr]">
               {OVERVIEW.map((row) => (
                 <div key={row.label} className="contents">
                   <dt>
