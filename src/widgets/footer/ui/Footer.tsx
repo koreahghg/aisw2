@@ -33,6 +33,13 @@ export default function Footer() {
                     </Link>
                   </li>
                 ))}
+                {col.key === "guide" && (
+                  <li>
+                    <Link href="/guide/status" className="text-body-s text-white/60 hover:text-white">
+                      실시간 현황
+                    </Link>
+                  </li>
+                )}
               </ul>
             </div>
           ))}

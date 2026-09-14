@@ -1,9 +1,6 @@
 import Link from "next/link";
-import CapacityWidget from "@/widgets/capacity-status/ui/CapacityWidget";
-import CongestionWidget from "@/widgets/congestion-status/ui/CongestionWidget";
 import PromoVideo from "@/widgets/promo-video/ui/PromoVideo";
 import TimelineSection from "@/widgets/event-timeline/ui/TimelineSection";
-import EventStatsRow from "@/widgets/event-stats/ui/EventStatsRow";
 import QuickApplyGroups from "@/widgets/quick-apply/ui/QuickApplyGroups";
 import Button from "@/shared/ui/Button";
 import Badge from "@/shared/ui/Badge";
@@ -18,7 +15,7 @@ const HERO_FACTS = [
 export default function HomePage() {
   return (
     <div>
-      <section className="border-b border-border-default bg-bg-muted">
+      <section className="border-b border-border-default border-t-[3px] border-t-primary-50 bg-bg-muted">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-stretch">
             <div className="flex flex-col justify-between">
@@ -55,10 +52,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
-        <EventStatsRow />
-      </section>
-
       <section className="mx-auto max-w-6xl px-4 py-4 sm:px-6">
         <h2 className="text-heading-s font-bold text-fg-1">지금, 미래를 만나보세요</h2>
         <p className="mt-1 text-body-s text-fg-3">
@@ -66,14 +59,6 @@ export default function HomePage() {
         </p>
         <div className="mt-4">
           <QuickApplyGroups />
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
-        <h2 className="text-heading-s font-bold text-fg-1">실시간 상세 현황</h2>
-        <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
-          <CapacityWidget />
-          <CongestionWidget />
         </div>
       </section>
 
