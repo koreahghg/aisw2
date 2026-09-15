@@ -51,7 +51,7 @@ export default function QuickApplyGroups() {
   return (
     <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
       {GROUPS.map((group) => (
-        <div key={group.key} className="flex flex-col rounded-xlarge bg-bg-subtle p-6">
+        <div key={group.key} className="flex flex-col rounded-xlarge bg-gray-10 p-6">
           <div className="flex items-center gap-3">
             <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-medium bg-primary-50 text-fg-on-primary">
               <Icon name={group.icon} className="h-5 w-5" />
