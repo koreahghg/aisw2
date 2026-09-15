@@ -51,7 +51,7 @@ export default function QuickApplyGroups() {
   return (
     <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
       {GROUPS.map((group) => (
-        <div key={group.key} className="flex flex-col rounded-xlarge border border-border-default bg-bg-canvas p-6">
+        <div key={group.key} className="flex flex-col rounded-xlarge bg-bg-subtle p-6">
           <div className="flex items-center gap-3">
             <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-medium bg-primary-50 text-fg-on-primary">
               <Icon name={group.icon} className="h-5 w-5" />
@@ -67,7 +67,7 @@ export default function QuickApplyGroups() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="group flex flex-col gap-1.5 rounded-medium border border-border-default px-4 py-3.5 transition-colors duration-150 ease-out hover:border-primary-50 hover:shadow-2"
+                className="group flex flex-col gap-1.5 rounded-medium bg-bg-canvas px-4 py-3.5"
               >
                 <div className="flex items-center justify-between gap-2">
                   <span className="flex items-center gap-2 text-body-s font-bold text-fg-1">
