@@ -21,3 +21,10 @@ export const congestionZones: CongestionZone[] = [
 ];
 
 export const congestionUpdatedAt = "14:20 기준";
+
+const LEVEL_ORDER: Record<CongestionLevel, number> = { "여유": 0, "보통": 1, "혼잡": 2, "매우 혼잡": 3 };
+
+export const overallCongestionLevel: CongestionLevel = congestionZones.reduce(
+  (worst, z) => (LEVEL_ORDER[z.level] > LEVEL_ORDER[worst] ? z.level : worst),
+  "여유" as CongestionLevel
+);

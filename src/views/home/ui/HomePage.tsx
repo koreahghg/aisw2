@@ -17,18 +17,15 @@ export default function HomePage() {
     <div>
       <section className="border-b border-border-default bg-bg-muted">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-stretch">
-            <div className="flex flex-col justify-between">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-5 lg:items-stretch">
+            <div className="flex flex-col justify-between lg:col-span-3">
               <div>
-                <h1 className="text-display-s font-bold text-fg-1 sm:text-display-m">
-                  2026 전남광주
-                  <br />
-                  AI·SW체험한마당
-                </h1>
+                <p className="text-body-l font-semibold text-fg-3 sm:text-heading-m">2026 전남광주통합특별시교육청</p>
+                <h1 className="mt-1 text-display-s font-bold text-fg-1 sm:text-display-m">AI미래교육박람회</h1>
                 <p className="mt-4 max-w-xl text-body-s text-fg-2 sm:text-body-m">
                   학생을 위한 AI·SW 한마당과 교원을 위한 미래교육박람회가 한자리에.
                   <br />
-                  지금 사전신청하고 줄서지 않고 스마트하게 참여하세요.
+                  지금 사전신청하고 기다림 없이 참여하세요.
                 </p>
               </div>
 
@@ -38,7 +35,9 @@ export default function HomePage() {
               </Button>
             </div>
 
-            <PromoVideo />
+            <div className="lg:col-span-2">
+              <PromoVideo />
+            </div>
           </div>
 
           <div className="mt-10 flex w-full flex-col items-start gap-4 rounded-xlarge border border-border-default bg-bg-canvas px-6 py-5 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
@@ -55,7 +54,7 @@ export default function HomePage() {
       <section className="mx-auto max-w-6xl px-4 py-4 sm:px-6">
         <h2 className="text-heading-s font-bold text-fg-1">지금, 미래를 만나보세요</h2>
         <p className="mt-1 text-body-s text-fg-3">
-          AI로 연결되는 배움의 장, 2026 전남광주 AI·SW체험한마당. 학생, 교사, 지역사회가 함께 만드는 특별한 경험에 지금 참여하세요.
+          AI로 연결되는 배움의 장, 2026 전남광주통합특별시교육청 AI미래교육박람회. 학생, 교사, 지역사회가 함께 만드는 특별한 경험에 지금 참여하세요.
         </p>
         <div className="mt-4">
           <QuickApplyGroups />

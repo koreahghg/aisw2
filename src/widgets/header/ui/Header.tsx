@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
 import { NAV_SECTIONS } from "@/shared/config/site-nav";
+import { overallCongestionLevel, CONGESTION_STYLE } from "@/entities/congestion/model/data";
 import Icon from "@/shared/ui/Icon";
 import HeaderSearch from "./HeaderSearch";
 
@@ -34,7 +35,7 @@ export default function Header() {
         onMouseLeave={closeOnHoverOut}
         onClick={() => setOpenDesktopKey(null)}
       >
-        <div className="relative mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6">
+        <div className="relative mx-auto grid h-14 max-w-6xl grid-cols-[1fr_auto_1fr] items-center px-4 sm:px-6">
           <Link
             href="/"
             className="flex items-center"
@@ -43,11 +44,25 @@ export default function Header() {
               if (pathname === "/") window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           >
-            <Image src="/lg.png" alt="2026 전남광주 AI·SW체험한마당" width={643} height={154} className="h-8 w-auto sm:h-9" priority />
+            <Image src="/lg.png" alt="2026 전남광주통합특별시교육청 AI미래교육박람회" width={643} height={154} className="h-8 w-auto sm:h-9" priority />
           </Link>
 
-          <nav className="absolute left-1/2 hidden h-14 -translate-x-1/2 items-center gap-8 md:flex">
+          <nav className="hidden h-14 items-center gap-6 md:flex">
             {NAV_SECTIONS.map((item) => {
+              if (item.external) {
+                return (
+                  <a
+                    key={item.key}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex h-full items-center whitespace-nowrap text-body-m font-bold text-fg-2 transition-colors duration-150 ease-out hover:text-fg-1"
+                  >
+                    {item.label}
+                  </a>
+                );
+              }
+
               const matchBase = item.matchPrefix ?? item.href;
               const active = pathname === matchBase || pathname.startsWith(matchBase + "/");
               return (
@@ -55,7 +70,7 @@ export default function Header() {
                   key={item.href}
                   href={item.href}
                   onMouseEnter={() => openDesktopMenu(item.key)}
-                  className={`relative flex h-full items-center text-body-m font-bold transition-colors duration-150 ease-out ${
+                  className={`relative flex h-full items-center whitespace-nowrap text-body-m font-bold transition-colors duration-150 ease-out ${
                     active ? "text-primary-60" : "text-fg-2 hover:text-fg-1"
                   }`}
                 >
@@ -64,9 +79,14 @@ export default function Header() {
                 </Link>
               );
             })}
+
+            <span className="flex items-center gap-1.5 whitespace-nowrap rounded-pill border border-border-default px-3 py-1 text-body-xs font-semibold text-fg-2">
+              <span className={`h-2 w-2 shrink-0 rounded-full ${CONGESTION_STYLE[overallCongestionLevel].dot}`} />
+              혼잡도 {overallCongestionLevel}
+            </span>
           </nav>
 
-          <div className="flex items-center gap-1">
+          <div className="flex items-center justify-self-end gap-1">
             <button
               type="button"
               className="flex h-10 w-10 items-center justify-center text-fg-2 transition-colors duration-150 ease-out hover:text-primary-60"
@@ -103,7 +123,7 @@ export default function Header() {
           }`}
         >
           <div key={openSeq} className="mx-auto grid max-w-6xl grid-cols-2 gap-6 px-4 py-8 sm:grid-cols-3 sm:px-6 md:grid-cols-5 md:gap-8">
-            {NAV_SECTIONS.map((section) => (
+            {NAV_SECTIONS.filter((section) => !section.external).map((section) => (
               <div key={section.key}>
                 <p className="text-body-xs font-bold text-fg-3">{section.label}</p>
                 <ul className="mt-4 flex flex-col gap-1">

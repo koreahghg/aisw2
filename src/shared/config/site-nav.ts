@@ -16,6 +16,7 @@ export interface NavSection {
   matchPrefix?: string;
   label: string;
   sub: NavSubItem[];
+  external?: boolean;
 }
 
 export const NAV_SECTIONS: NavSection[] = [
@@ -49,5 +50,13 @@ export const NAV_SECTIONS: NavSection[] = [
     href: "/notice",
     label: "알림마당",
     sub: noticeNavItems,
+  },
+  {
+    // TODO: 실제 주차장 안내 사이트 URL로 교체
+    key: "parking",
+    href: "/",
+    label: "주차장 안내",
+    sub: [],
+    external: true,
   },
 ];
