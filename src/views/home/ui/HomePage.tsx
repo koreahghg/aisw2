@@ -52,7 +52,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-4 sm:px-6">
+      <section className="mx-auto max-w-6xl px-4 pb-4 pt-10 sm:px-6 sm:pt-14">
         <h2 className="text-heading-s font-bold text-fg-1">지금, 미래를 만나보세요</h2>
         <p className="mt-1 text-body-s text-fg-3">
           AI로 연결되는 배움의 장, 2026 전남광주통합특별시교육청 AI미래교육박람회. 학생, 교사, 지역사회가 함께 만드는 특별한 경험에 지금 참여하세요.
