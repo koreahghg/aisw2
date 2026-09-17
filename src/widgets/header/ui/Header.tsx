@@ -79,14 +79,24 @@ export default function Header() {
                 </Link>
               );
             })}
-
-            <span className="flex items-center gap-1.5 whitespace-nowrap rounded-pill border border-border-default px-3 py-1 text-body-xs font-semibold text-fg-2">
-              <span className={`h-2 w-2 shrink-0 rounded-full ${CONGESTION_STYLE[overallCongestionLevel].dot}`} />
-              혼잡도 {overallCongestionLevel}
-            </span>
           </nav>
 
-          <div className="flex items-center justify-self-end gap-1">
+          <div className="flex items-center justify-self-end gap-3">
+            <div className="hidden items-center gap-2 md:flex">
+              <span className="flex items-center gap-1.5 whitespace-nowrap rounded-pill bg-bg-subtle px-3 py-1 text-body-xs font-semibold text-fg-2">
+                실시간 현황
+                <span className={`h-2 w-2 shrink-0 rounded-full ${CONGESTION_STYLE[overallCongestionLevel].dot}`} />
+                {overallCongestionLevel}
+              </span>
+              {/* TODO: 실제 주차장 안내 사이트 URL로 교체 (현재는 준비 중 404로 연결) */}
+              <a
+                href="/parking-guide"
+                className="flex items-center whitespace-nowrap rounded-pill bg-bg-subtle px-3 py-1 text-body-xs font-semibold text-fg-2 transition-colors duration-150 ease-out hover:text-primary-60"
+              >
+                주차장 안내
+              </a>
+            </div>
+
             <button
               type="button"
               className="flex h-10 w-10 items-center justify-center text-fg-2 transition-colors duration-150 ease-out hover:text-primary-60"

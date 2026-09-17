@@ -51,12 +51,4 @@ export const NAV_SECTIONS: NavSection[] = [
     label: "알림마당",
     sub: noticeNavItems,
   },
-  {
-    // TODO: 실제 주차장 안내 사이트 URL로 교체 (현재는 준비 중 404로 연결)
-    key: "parking",
-    href: "/parking-guide",
-    label: "주차장 안내",
-    sub: [],
-    external: true,
-  },
 ];
